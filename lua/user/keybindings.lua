@@ -13,7 +13,13 @@ map("x", "m", "d", { silent = true })
 map("n", "M", "D", { silent = true })
 map("n", "mm", "dd", { silent = true })
 
+
 vim.g.mapleader = " "
+
+map("n", "<leader>r", ":BufferLinePick<CR>")
+map("n", "<leader>q", ":BufferLinePickClose<CR>")
+map("n", "<leader>w", ":BufferLineMovePrev<CR>")
+map("n", "<leader>e", ":BufferLineMoveNext<CR>")
 map("n", "<leader>t", ":Neotree<CR>")
 map("n", "<leader>ff", ":Telescope find_files<CR>")
 map("n", "<leader>fg", ":Telescope live_grep<CR>")

@@ -46,13 +46,12 @@ return packer.startup(function(use)
   use {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     }
   }
-  
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
   use 'nvim-treesitter/nvim-treesitter'
@@ -61,7 +60,6 @@ return packer.startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -96,6 +94,8 @@ return packer.startup(function(use)
   use 'nvim-lua/lsp-status.nvim'
   use 'ethanholz/nvim-lastplace'
   use 'p00f/nvim-ts-rainbow'
+  use 'github/copilot.vim'
+  use 'mhinz/vim-signify'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
