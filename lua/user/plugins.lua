@@ -96,6 +96,7 @@ return packer.startup(function(use)
   use 'p00f/nvim-ts-rainbow'
   use 'github/copilot.vim'
   use 'mhinz/vim-signify'
+  use 'mfussenegger/nvim-dap'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

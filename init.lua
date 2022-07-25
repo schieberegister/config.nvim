@@ -7,7 +7,7 @@ require "user.keybindings"
   vim.go.ruler = true
   vim.go.mouse = "a"
   vim.go.smarttab = true
-  vim.go.ma = true 
+  vim.go.ma = true
   vim.go.background = "dark"
   vim.go.updatetime = 100
 
@@ -24,7 +24,7 @@ require "user.keybindings"
   vim.bo.softtabstop = 2
   vim.cmd('colorscheme PaperColor')
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-  
+
 require('Comment').setup()
 require("lsp-status")
 require "user.lualine"
@@ -44,6 +44,40 @@ require("nvim-treesitter.configs").setup({
     --[[ max_file_lines = nil, -- Do not enable for files with more than n lines, int
     -- colors = {}, -- table of hex strings ]]
     -- termcolors = {} -- table of colour name strings
+  }
+})
+
+require("neo-tree").setup({
+  close_if_last_window = true,
+  popup_border_style = "rounded",
+  enable_git_status = true,
+  enable_diagnostics = true,
+  default_component_configs = {
+      modified = {
+      symbol = "[+]",
+      highlight = "NeoTreeModified",
+      },
+      git_status = {
+        symbols = {
+          -- Change type
+          added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted   = "✖",-- this can only be used in the git_status source
+          renamed   = "",-- this can only be used in the git_status source
+          -- Status type
+          untracked = "",
+          ignored   = "",
+          unstaged  = "",
+          staged    = "",
+          conflict  = "",
+        }
+      },
+  },
+  filesystem = {
+    filtered_items = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
+    }
   }
 })
 
