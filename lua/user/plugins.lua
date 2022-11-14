@@ -55,6 +55,7 @@ return packer.startup(function(use)
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
   use 'nvim-treesitter/nvim-treesitter'
+  use 'p00f/nvim-ts-rainbow'
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -93,10 +94,27 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'nvim-lua/lsp-status.nvim'
   use 'ethanholz/nvim-lastplace'
-  use 'p00f/nvim-ts-rainbow'
   use 'github/copilot.vim'
   use 'mhinz/vim-signify'
-  use 'mfussenegger/nvim-dap'
+  use 'folke/which-key.nvim'
+  -- debugging general
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'ellisonleao/dotenv.nvim'
+
+  -- trouble plugins shows lsp-errors and warnings
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -36,17 +36,6 @@ require'nvim-lastplace'.setup {
     lastplace_open_folds = true
 }
 
-require("nvim-treesitter.configs").setup({
-  rainbow = {
-    enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    --[[ max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings ]]
-    -- termcolors = {} -- table of colour name strings
-  }
-})
-
 require("neo-tree").setup({
   close_if_last_window = true,
   popup_border_style = "rounded",
@@ -82,4 +71,4 @@ require("neo-tree").setup({
 })
 
 require "user.lsp-init"
-
+require "user.dap-init"
