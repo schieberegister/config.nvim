@@ -17,11 +17,10 @@ require "user.keybindings"
   vim.cmd "set noshowmode"
 
   -- buffer option
-  vim.bo.autoindent = true
-  vim.bo.tabstop = 2
-  vim.bo.shiftwidth = 2
-  vim.bo.expandtab = true
-  vim.bo.softtabstop = 2
+  -- vim.bo.tabstop = 2
+  -- vim.bo.shiftwidth = 2
+  -- vim.bo.expandtab = true
+  -- vim.bo.softtabstop = 2
   vim.cmd('colorscheme PaperColor')
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 

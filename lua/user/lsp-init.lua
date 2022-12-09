@@ -5,6 +5,7 @@
     },
     indent = {
       enable = true,
+      disable = { 'python', 'c' },
     },
     autotag = {
       enable = true,
@@ -64,4 +65,7 @@ cmp.setup({
   })
 
 require("user.lsp.go")
-require("user.lsp.lua")
+require("user.lsp.c")
+-- require("user.lsp.lua")
+require("user.lsp.flutter")
+require("user.lsp.python")
