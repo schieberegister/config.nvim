@@ -40,38 +40,91 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "NLKNguyen/papercolor-theme"
-  use {
-  "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  }
-  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "NLKNguyen/papercolor-theme" -- pretty colorsheme :)
 
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'p00f/nvim-ts-rainbow'
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+      require("neo-tree").setup ({
+        filesystem = {
+          filtered_items = {
+            hide_dotfiles = false,
+            never_show = {
+              ".git",
+              ".DS_Store"
+            }
+          }
+        }
+      })
+    end
+  }
+  
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require("bufferline").setup{}
+    end
+  }
+
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+  
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    },
+    config = function()
+      require("user.lualine")
+    end
+
+  }
+
+  use {
+    'ethanholz/nvim-lastplace',
+    config = function()
+     require'nvim-lastplace'.setup {
+        lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
+        lastplace_ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"},
+        lastplace_open_folds = true
+      }
+    end
+  }
+  use({
+  "gbprod/cutlass.nvim",
+  config = function()
+    require("cutlass").setup({
+      cut_key = "m"
+    })
+  end
+  })
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = {
+      'nvim-lua/plenary.nvim'
+    } 
   }
 
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
-  }
+  use 'nvim-treesitter/nvim-treesitter'
+  use 'p00f/nvim-ts-rainbow'
 
   use {
     'phaazon/hop.nvim',
@@ -81,41 +134,6 @@ return packer.startup(function(use)
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
-
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use 'svermeulen/vim-cutlass'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use 'lukas-reineke/lsp-format.nvim'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'nvim-lua/lsp-status.nvim'
-  use 'ethanholz/nvim-lastplace'
-  use 'github/copilot.vim'
-  use 'mhinz/vim-signify'
-  use 'folke/which-key.nvim'
-  -- debugging general
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-  use 'theHamsta/nvim-dap-virtual-text'
-  use 'nvim-telescope/telescope-dap.nvim'
-  use 'ellisonleao/dotenv.nvim'
-
-  -- trouble plugins shows lsp-errors and warnings
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
