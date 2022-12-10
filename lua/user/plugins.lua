@@ -177,6 +177,19 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    "mfussenegger/nvim-dap",
+    requires = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+      'nvim-telescope/telescope-dap.nvim',
+      'ellisonleao/dotenv.nvim'
+    },
+    config = function()
+      require("user.dap")
+    end
+  }
+
   use 'github/copilot.vim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
