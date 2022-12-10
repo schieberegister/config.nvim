@@ -23,5 +23,5 @@ require("user.keymap")
     vim.bo.preserveindent = true
     vim.bo.copyindent = true
     vim.bo.autoindent = true
-    vim.bo.shiftwidth = 2
+    vim.bo.shiftwidth = 0
     vim.cmd('autocmd FileType * set formatoptions-=cro') -- disable crappy continuation of comments

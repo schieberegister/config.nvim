@@ -123,7 +123,6 @@ return packer.startup(function(use)
     } 
   }
 
-  use 'nvim-treesitter/nvim-treesitter'
   use 'p00f/nvim-ts-rainbow'
 
   use {
@@ -135,6 +134,50 @@ return packer.startup(function(use)
     end
   }
 
+  use 'mhinz/vim-signify'
+  
+
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-lua/lsp-status.nvim',
+      'lukas-reineke/lsp-format.nvim',
+      {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require("trouble").setup({})
+        end
+      },
+      -- autocomplete
+        { 'hrsh7th/nvim-cmp',
+          requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-nvim-lsp-signature-help',
+            {
+              "L3MON4D3/LuaSnip",
+              tag = "v1.*"
+            },
+            {
+              'windwp/nvim-autopairs',
+              config = function()
+                require("nvim-autopairs").setup {}
+              end 
+            }
+          }
+        }
+
+    },
+    config = function()
+      require("user.lsp")
+    end
+  }
+
+  use 'github/copilot.vim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
