@@ -123,7 +123,6 @@ return packer.startup(function(use)
     } 
   }
 
-  use 'p00f/nvim-ts-rainbow'
 
   use {
     'phaazon/hop.nvim',
@@ -166,7 +165,7 @@ return packer.startup(function(use)
               'windwp/nvim-autopairs',
               config = function()
                 require("nvim-autopairs").setup {}
-              end 
+              end
             }
           }
         }
@@ -176,6 +175,14 @@ return packer.startup(function(use)
       require("user.lsp")
     end
   }
+
+  use {
+    'mrjones2014/nvim-ts-rainbow',
+    requires = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+  }
+
 
   use {
     "mfussenegger/nvim-dap",

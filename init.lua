@@ -9,7 +9,6 @@ require("user.keymap")
 	  vim.go.showmode = false
 	  vim.go.scrolloff = 5
     vim.go.showmatch = true
-    vim.cmd('colorscheme PaperColor')
     vim.cmd('set clipboard=unnamed')
 
 	  -- window options
@@ -25,3 +24,7 @@ require("user.keymap")
     vim.bo.autoindent = true
     vim.bo.shiftwidth = 0
     vim.cmd('autocmd FileType * set formatoptions-=cro') -- disable crappy continuation of comments
+    pcall(
+    	vim.cmd,
+	'colorscheme PaperColor'
+    )
