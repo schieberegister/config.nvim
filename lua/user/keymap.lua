@@ -50,6 +50,10 @@ map("n", "<leader>s", ":lua require'hop'.hint_words()<cr>", { silent = true })
   map("n", "<leader>df", "<cmd>lua require'dap'.ui.frames()<CR>", { silent = true })
   map("n", "<leader>ds", "<cmd>lua require'dap'.close(); require('dapui').close()<CR>", { silent = true })
 
+  -- keep selection after indenting
+  map("v", "<", "<gv", { silent = true })
+  map("v", ">", ">gv", { silent = true })
+
 -- copilot
   vim.cmd('imap <silent><script><expr> <C-g> copilot#Accept("\\<CR>")')
   vim.cmd('let g:copilot_no_tab_map = v:true')
